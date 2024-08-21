@@ -1,0 +1,387 @@
+{
+	"info": {
+		"_postman_id": "9022f9aa-7ba0-4400-bffb-dd921a12f57f",
+		"name": "CrispAssignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17191064"
+	},
+	"item": [
+		{
+			"name": "SearchPatientByNameApiRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responsebody = pm.response.json();",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Verify if the paitent name is correct\", function () {",
+							"    ",
+							"    pm.expect(responsebody[0].Name).to.eql(pm.iterationData.get(\"Name\"));",
+							"});",
+							"",
+							"pm.test(\"Verify if the paitent Address is correct\", function () {",
+							"    ",
+							"    pm.expect(responsebody[0].Address).to.eql(pm.iterationData.get(\"Address\"));",
+							"});",
+							"",
+							"pm.test(\"Verify if the paitent Id is correct\", function () {",
+							"    ",
+							"    pm.expect(responsebody[0].Id).to.eql(pm.iterationData.get(\"Id\").toString());",
+							"});",
+							"",
+							"",
+							"var schema={",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",",
+							"  \"type\": \"array\",",
+							"  \"items\": [",
+							"    {",
+							"      \"type\": \"object\",",
+							"      \"properties\": {",
+							"        \"Id\": {",
+							"          \"type\": \"string\"",
+							"        },",
+							"        \"Name\": {",
+							"          \"type\": \"string\"",
+							"        },",
+							"        \"DateOfBirth\": {",
+							"          \"type\": \"string\"",
+							"        },",
+							"        \"Address\": {",
+							"          \"type\": \"string\"",
+							"        }",
+							"      },",
+							"      \"required\": [",
+							"        \"Id\",",
+							"        \"Name\",",
+							"        \"DateOfBirth\",",
+							"        \"Address\"",
+							"      ]",
+							"    }",
+							"  ]",
+							"};",
+							"",
+							"",
+							"",
+							"pm.test('Schema is valid', function () {",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;",
+							"    });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/patients/query/?Name={{Name}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"patients",
+						"query",
+						""
+					],
+					"query": [
+						{
+							"key": "Name",
+							"value": "{{Name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchPatientByIdApiRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responsebody = pm.response.json();",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Verify if the paitent Id is correct\", function () {",
+							"    ",
+							"    pm.expect(responsebody[0].Id).to.eql(pm.iterationData.get(\"Id\").toString());",
+							"});",
+							"pm.test(\"Verify if the paitent name is correct\", function () {",
+							"    ",
+							"    pm.expect(responsebody[0].Name).to.eql(pm.iterationData.get(\"Name\"));",
+							"});",
+							"pm.test(\"Verify if the paitent Address is correct\", function () {",
+							"    ",
+							"    pm.expect(responsebody[0].Address).to.eql(pm.iterationData.get(\"Address\"));",
+							"});",
+							"pm.test(\"Verify if the paitent Address is correct\", function () {",
+							"    ",
+							"    pm.expect(responsebody[0].Address).to.eql(pm.iterationData.get(\"Address\"));",
+							"});",
+							"",
+							"",
+							"var schema={",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",",
+							"  \"type\": \"array\",",
+							"  \"items\": [",
+							"    {",
+							"      \"type\": \"object\",",
+							"      \"properties\": {",
+							"        \"Id\": {",
+							"          \"type\": \"string\"",
+							"        },",
+							"        \"Name\": {",
+							"          \"type\": \"string\"",
+							"        },",
+							"        \"DateOfBirth\": {",
+							"          \"type\": \"string\"",
+							"        },",
+							"        \"Address\": {",
+							"          \"type\": \"string\"",
+							"        }",
+							"      },",
+							"      \"required\": [",
+							"        \"Id\",",
+							"        \"Name\",",
+							"        \"DateOfBirth\",",
+							"        \"Address\"",
+							"      ]",
+							"    }",
+							"  ]",
+							"};",
+							"",
+							"",
+							"",
+							"pm.test('Schema is valid', function () {",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;",
+							"    });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/patients/query/?Id={{Id}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"patients",
+						"query",
+						""
+					],
+					"query": [
+						{
+							"key": "Id",
+							"value": "{{Id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchPatientByAddressApiRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responsebody = pm.response.json();",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Verify if the paitent Address is correct\", function () {",
+							"    ",
+							"    pm.expect(responsebody[0].Address).to.eql(pm.iterationData.get(\"Address\"));",
+							"});",
+							"pm.test(\"Verify if the paitent Id is correct\", function () {",
+							"    ",
+							"    pm.expect(responsebody[0].Id).to.eql(pm.iterationData.get(\"Id\").toString());",
+							"    pm.test(\"Verify if the paitent name is correct\", function () {",
+							"    ",
+							"    pm.expect(responsebody[0].Name).to.eql(pm.iterationData.get(\"Name\"));",
+							"});",
+							"",
+							"",
+							"var schema={",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",",
+							"  \"type\": \"array\",",
+							"  \"items\": [",
+							"    {",
+							"      \"type\": \"object\",",
+							"      \"properties\": {",
+							"        \"Id\": {",
+							"          \"type\": \"string\"",
+							"        },",
+							"        \"Name\": {",
+							"          \"type\": \"string\"",
+							"        },",
+							"        \"DateOfBirth\": {",
+							"          \"type\": \"string\"",
+							"        },",
+							"        \"Address\": {",
+							"          \"type\": \"string\"",
+							"        }",
+							"      },",
+							"      \"required\": [",
+							"        \"Id\",",
+							"        \"Name\",",
+							"        \"DateOfBirth\",",
+							"        \"Address\"",
+							"      ]",
+							"    }",
+							"  ]",
+							"};",
+							"",
+							"",
+							"",
+							"pm.test('Schema is valid', function () {",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;",
+							"    });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/patients/query/?Address={{Address}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"patients",
+						"query",
+						""
+					],
+					"query": [
+						{
+							"key": "Address",
+							"value": "{{Address}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
