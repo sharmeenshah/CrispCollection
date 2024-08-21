@@ -31,7 +31,7 @@ jobs:
           newman run CrispAssignment.postman_collection.json \
             -e QA.postman_environment.json \
             -d testdata.csv \
-            -r htmlextra \
+            -r htmlextra,cli \
             --reporter-htmlextra-export newman-report.html
 
       - name: Archive Newman HTMLExtra Report
