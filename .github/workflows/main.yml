@@ -27,15 +27,24 @@ jobs:
           npm install -g newman-reporter-htmlextra
 
       - name: Run Newman Collection with HTMLExtra Reporter
+        id: newman-run
         run: |
           newman run CrispAssignment.postman_collection.json \
             -e QA.postman_environment.json \
             -d testdata.csv \
-            -r htmlextra,cli \
+            -r htmlextra \
             --reporter-htmlextra-export newman-report.html
 
-      - name: Archive Newman HTMLExtra Report
+      - name: Archive Report with Success Name
+        if: always() && success()
         uses: actions/upload-artifact@v3
         with:
-          name: newman-html-report
+          name: newman-html-report-success
+          path: newman-report.html
+
+      - name: Archive Report with Failure Name
+        if: always() && failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: newman-html-report-failure
           path: newman-report.html
