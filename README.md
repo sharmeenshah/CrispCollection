@@ -1,5 +1,6 @@
-#ASSIGMENT SOLUTION#
-Author Sharmeen Shah
+# ASSIGMENT SOLUTION #
+## Author
+ **Sharmeen Shah**
 ## Clone the Repository
 
 ```bash
