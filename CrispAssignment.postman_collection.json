@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "9022f9aa-7ba0-4400-bffb-dd921a12f57f",
+		"_postman_id": "7bd7d0dc-cd89-40f8-9651-1e15388f5a7e",
 		"name": "CrispAssignment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "17191064"
+		"_exporter_id": "648497"
 	},
 	"item": [
 		{
@@ -157,7 +157,7 @@
 							"pm.test(\"Verify if the paitent name is correct\", function () {",
 							"    ",
 							"    pm.expect(responsebody[0].Name).to.eql(pm.iterationData.get(\"Name\"));",
-							"});",						
+							"});",
 							"pm.test(\"Verify if the paitent Address is correct\", function () {",
 							"    ",
 							"    pm.expect(responsebody[0].Address).to.eql(pm.iterationData.get(\"Address\"));",
@@ -280,7 +280,8 @@
 							"});",
 							"pm.test(\"Verify if the paitent Id is correct\", function () {",
 							"    ",
-							"    pm.expect(responsebody[0].Id).to.eql(pm.iterationData.get(\"Id\").toString());",
+							"    pm.expect(responsebody[0].Id).to.eql(pm.iterationData.get(\"Id\").toString())",
+							"});",
 							"    pm.test(\"Verify if the paitent name is correct\", function () {",
 							"    ",
 							"    pm.expect(responsebody[0].Name).to.eql(pm.iterationData.get(\"Name\"));",
@@ -317,11 +318,10 @@
 							"  ]",
 							"};",
 							"",
-							"",
-							"",
 							"pm.test('Schema is valid', function () {",
 							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;",
-							"    });"
+							"    });",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
